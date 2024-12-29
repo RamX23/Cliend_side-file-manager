@@ -1,10 +1,7 @@
 import { Navigate, Route, Routes } from "react-router-dom";
-import FloatingShape from "./components/FloatingShape";
-
 import SignUpPage from "./pages/SignUpPage";
 import LoginPage from "./pages/LoginPage";
 import EmailVerificationPage from "./pages/EmailVerificationPage";
-import DashboardPage from "./pages/DashboardPage";
 import ForgotPasswordPage from "./pages/ForgotPasswordPage";
 import ResetPasswordPage from "./pages/ResetPasswordPage";
 
@@ -13,10 +10,8 @@ import FileUpload from "./pages/FileUpload";
 import { Toaster } from "react-hot-toast";
 import { useAuthStore } from "./store/authStore";
 import { useEffect } from "react";
-import Navbar from "./components/Navbar";
 
 
-// protect routes that require authentication
 const ProtectedRoute = ({ children }) => {
 	const { isAuthenticated, user } = useAuthStore();
 
@@ -54,7 +49,6 @@ function App() {
 		<>
 
 		<div
-			className='min-h-screen flex items-center justify-center relative overflow-hidden'
 		>
 
 
@@ -63,7 +57,7 @@ function App() {
 					path='/'
 					element={
 						<ProtectedRoute>
-							<DashboardPage />
+							<FileUpload />
 						</ProtectedRoute>
 					}
 				/>
@@ -108,8 +102,7 @@ function App() {
 					}
 				/>
                
-				{/* catch all routes */}
-				<Route path='*' element={<Navigate to='/' replace />} />
+				<Route path='*' element={<Navigate to='/Home' replace />} />
 				
 			</Routes>
 			<Toaster />

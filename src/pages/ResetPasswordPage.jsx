@@ -12,7 +12,7 @@ const ResetPasswordPage = () => {
 	const { resetPassword, error, isLoading, message } = useAuthStore();
 
 	const { token } = useParams();
-	const navigate = useNavigate("/login");
+	const navigate = useNavigate();
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -35,6 +35,7 @@ const ResetPasswordPage = () => {
 	};
 
 	return (
+		<div className="flex justify-center align-items-center vh-100">
 		<motion.div
 			initial={{ opacity: 0, y: 20 }}
 			animate={{ opacity: 1, y: 0 }}
@@ -79,6 +80,7 @@ const ResetPasswordPage = () => {
 				</form>
 			</div>
 		</motion.div>
+		</div>
 	);
 };
 export default ResetPasswordPage;

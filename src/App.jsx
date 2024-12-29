@@ -19,7 +19,7 @@ const ProtectedRoute = ({ children }) => {
 		return <Navigate to='/login' replace />;
 	}
 
-	if (!user.isVerified) {
+	if (!user.isVerified ) {
 		return <Navigate to='/verify-email' replace />;
 	}
 
@@ -87,22 +87,20 @@ function App() {
 					}
 				/>
 
-				<Route
-					path='/reset-password/:token'
-					element={
-						<RedirectAuthenticatedUser>
-							<ResetPasswordPage />
-						</RedirectAuthenticatedUser>
-					}
-				/>
+             <Route
+           path='/reset-password/:token'
+            element={<ResetPasswordPage />}
+           />
                 <Route
 					path='/Home'
 					element={
-							<FileUpload/>
+						<ProtectedRoute>
+						<FileUpload />
+					</ProtectedRoute>
 					}
 				/>
                
-				<Route path='*' element={<Navigate to='/Home' replace />} />
+				<Route path='*' element={<Navigate to='/' replace />} />
 				
 			</Routes>
 			<Toaster />
